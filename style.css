@@ -88,7 +88,7 @@ a {
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(3, 4, 5, 0.12), rgba(3, 4, 5, 0.88)),
-    url("assets/hero.webp") center / cover no-repeat;
+    url("hero.webp") center / cover no-repeat;
 }
 
 .hero::after {
@@ -270,7 +270,7 @@ a {
       rgba(5, 7, 9, 0.78) 47%,
       rgba(5, 7, 9, 0.91)
     ),
-    url("assets/section.webp") center top / cover fixed;
+    url("section.webp") center top / cover fixed;
 }
 
 .story-background::before {
