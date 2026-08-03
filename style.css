@@ -1,0 +1,778 @@
+:root {
+  --background: #07080a;
+  --panel: rgba(10, 12, 14, 0.92);
+  --gold: #c99d43;
+  --gold-light: #eed080;
+  --text: #f4f0e9;
+  --muted: #b9b2a8;
+  --green: #59c841;
+  --green-light: #75e05a;
+  --line: rgba(201, 157, 67, 0.38);
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.48);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text);
+  background: var(--background);
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 72px 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 0 32px;
+  color: var(--gold-light);
+  font: 600 clamp(25px, 4vw, 34px) / 1.1 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.section-title::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+
+/* Первый экран */
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 60px 18px 42px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(3, 4, 5, 0.12), rgba(3, 4, 5, 0.88)),
+    url("assets/hero.webp") center / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 190px;
+  pointer-events: none;
+  background: linear-gradient(transparent, var(--background));
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.moon-symbols {
+  margin-bottom: 18px;
+  color: var(--gold-light);
+  font-size: 24px;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(238, 208, 128, 0.22);
+}
+
+.hero__title {
+  margin: 14px 0 8px;
+  color: var(--text);
+  font: 600 clamp(64px, 11vw, 118px) / 0.9 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 3px;
+}
+
+.hero__title span {
+  color: var(--gold-light);
+  text-shadow: 0 0 35px rgba(238, 208, 128, 0.12);
+}
+
+.hero__tagline {
+  margin: 17px 0 0;
+  color: #f5f2ed;
+  font-size: clamp(11px, 1.6vw, 16px);
+  letter-spacing: 7px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.gold-divider {
+  width: min(520px, 80%);
+  height: 1px;
+  margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero__lead {
+  max-width: 710px;
+  margin: 0 auto;
+  color: #d5d0c8;
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.75;
+}
+
+.main-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 730px;
+  margin: 30px auto 0;
+}
+
+.main-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 82px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  color: #fff;
+  background: rgba(6, 8, 10, 0.9);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+}
+
+.main-button:focus-visible,
+.whatsapp-item:focus-visible,
+.footer__top:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+.main-button--telegram {
+  border: 1px solid rgba(201, 157, 67, 0.85);
+}
+
+.main-button--whatsapp {
+  border: 1px solid rgba(89, 200, 65, 0.8);
+}
+
+.main-button__icon {
+  flex: 0 0 auto;
+  font-size: 31px;
+}
+
+.main-button--telegram .main-button__icon {
+  color: var(--gold-light);
+}
+
+.main-button--whatsapp .main-button__icon {
+  color: var(--green-light);
+}
+
+.main-button strong {
+  display: block;
+  text-align: left;
+  font-size: 15px;
+}
+
+.main-button small {
+  display: block;
+  margin-top: 4px;
+  color: #aaa49a;
+  font-size: 11px;
+  text-align: left;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 157, 67, 0.14);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 65px;
+  padding: 8px 12px;
+  border-right: 1px solid rgba(201, 157, 67, 0.22);
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.trust-item:last-child {
+  border-right: 0;
+}
+
+.trust-item__icon {
+  color: var(--gold-light);
+  font-size: 28px;
+}
+
+
+/* Общий атмосферный фон */
+
+.story-background {
+  position: relative;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 7, 9, 0.10),
+      rgba(5, 7, 9, 0.78) 47%,
+      rgba(5, 7, 9, 0.91)
+    ),
+    url("assets/section.webp") center top / cover fixed;
+}
+
+.story-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      var(--background),
+      transparent 12%,
+      transparent 88%,
+      var(--background)
+    );
+}
+
+
+/* Услуги */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.service-card {
+  min-height: 265px;
+  padding: 25px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 18, 21, 0.91),
+      rgba(8, 10, 12, 0.95)
+    );
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(238, 208, 128, 0.72);
+}
+
+.service-card__icon,
+.service-card__numbers {
+  display: grid;
+  place-items: center;
+  min-height: 72px;
+  color: var(--gold-light);
+}
+
+.service-card__icon {
+  font-size: 46px;
+}
+
+.service-card__numbers {
+  font: 600 27px / 1.05 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 7px;
+}
+
+.service-card h3 {
+  margin: 8px 0 12px;
+  color: var(--gold-light);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.service-card p {
+  margin: 0;
+  color: #d0cac1;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* Когда поможет разбор */
+
+.help-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.3fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.help-layout__visual {
+  min-height: 370px;
+}
+
+.help-box {
+  padding: 34px;
+  border: 1px solid rgba(201, 157, 67, 0.18);
+  border-radius: 18px;
+  background: rgba(7, 9, 11, 0.74);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(3px);
+}
+
+.help-box h2 {
+  margin: 0 0 20px;
+  color: var(--gold-light);
+  font: 600 clamp(28px, 4vw, 40px) / 1.1 "Cormorant Garamond", Georgia, serif;
+  text-transform: uppercase;
+}
+
+.check-item {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+  color: #ddd8d0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.check-item span {
+  flex: 0 0 auto;
+  color: var(--gold-light);
+  font-size: 20px;
+}
+
+.check-item p {
+  margin: 0;
+}
+
+
+/* Этапы работы */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.step-card {
+  display: flex;
+  gap: 15px;
+  padding: 24px;
+  border: 1px solid rgba(201, 157, 67, 0.2);
+  border-radius: 15px;
+  background: rgba(8, 10, 12, 0.84);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+}
+
+.step-card__number {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font: 600 25px "Cormorant Garamond", Georgia, serif;
+}
+
+.step-card h3 {
+  margin: 3px 0 8px;
+  color: var(--gold-light);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+
+/* WhatsApp-воронка */
+
+.contact-section {
+  padding: 76px 0;
+  scroll-margin-top: 18px;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(115, 70, 130, 0.18),
+      transparent 45%
+    ),
+    var(--background);
+}
+
+.contact-panel {
+  padding: 44px 28px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.contact-panel__eyebrow {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.contact-panel h2 {
+  margin: 0;
+  color: var(--gold-light);
+  font: 600 clamp(34px, 5vw, 50px) / 1.05 "Cormorant Garamond", Georgia, serif;
+  text-align: center;
+}
+
+.contact-panel__lead {
+  max-width: 730px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  line-height: 1.65;
+  text-align: center;
+}
+
+.whatsapp-menu {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.whatsapp-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(89, 200, 65, 0.28);
+  border-radius: 14px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.whatsapp-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(89, 200, 65, 0.7);
+  background: rgba(89, 200, 65, 0.05);
+}
+
+.whatsapp-item__number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(89, 200, 65, 0.65);
+  border-radius: 50%;
+  color: var(--green-light);
+}
+
+.whatsapp-item strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.whatsapp-item small {
+  color: #aaa49a;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.whatsapp-item__arrow {
+  color: var(--green-light);
+  font-size: 22px;
+}
+
+.final-buttons {
+  margin-top: 27px;
+}
+
+
+/* Подвал */
+
+.footer {
+  padding: 30px 20px 86px;
+  color: #777168;
+  font-size: 11px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.footer p {
+  max-width: 800px;
+  margin: 9px auto;
+}
+
+.footer__top {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--gold-light);
+  text-decoration: none;
+}
+
+
+/* Мобильная панель */
+
+.mobile-contact-bar {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 50;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(201, 157, 67, 0.34);
+  border-radius: 13px;
+  background: rgba(8, 10, 12, 0.94);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-contact-bar a {
+  padding: 14px 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.mobile-contact-bar a:first-child {
+  border-right: 1px solid rgba(201, 157, 67, 0.28);
+  color: var(--gold-light);
+}
+
+.mobile-contact-bar a:last-child {
+  color: var(--green-light);
+}
+
+
+/* Анимация появления */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* Планшеты */
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .help-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .help-layout__visual {
+    min-height: 260px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .trust-item:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(201, 157, 67, 0.16);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-background {
+    background-attachment: scroll;
+    background-position: 35% top;
+  }
+}
+
+
+/* Телефоны */
+
+@media (max-width: 580px) {
+  .container {
+    width: min(100% - 16px, 1180px);
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .section-title {
+    letter-spacing: 2px;
+  }
+
+  .section-title::before,
+  .section-title::after {
+    width: 28px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 38px 10px 28px;
+    background-position: 52% center;
+  }
+
+  .moon-symbols {
+    font-size: 18px;
+    letter-spacing: 6px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .hero__title {
+    font-size: 62px;
+  }
+
+  .hero__tagline {
+    letter-spacing: 3px;
+  }
+
+  .main-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .main-button {
+    min-height: 74px;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-item {
+    justify-content: flex-start;
+    border-right: 0;
+    border-bottom: 1px solid rgba(201, 157, 67, 0.16);
+  }
+
+  .trust-item:last-child {
+    border-bottom: 0;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help-layout__visual {
+    min-height: 210px;
+  }
+
+  .help-box {
+    padding: 24px 18px;
+  }
+
+  .contact-panel {
+    padding: 34px 14px;
+  }
+
+  .whatsapp-item {
+    grid-template-columns: 42px 1fr 18px;
+    padding: 14px 11px;
+  }
+
+  .mobile-contact-bar {
+    display: grid;
+  }
+}
+
+
+/* Отключение анимаций для пользователей,
+   которые выбрали уменьшение движения */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .main-button,
+  .service-card,
+  .whatsapp-item {
+    transition: none;
+  }
+}
